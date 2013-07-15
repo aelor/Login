@@ -1,0 +1,47 @@
+<%= stylesheet_link_tag "posts.css.scss" %>
+  <div>
+	<% if flash[:status] == TRUE %>
+	    <p><% flash[:alert] %></p>
+	<% elsif flash[:status] == FALSE %>
+	    <% flash[:alert].each do |error|%>
+ 	    <p><%= error %></p>
+	  <% end %>
+	  <% end %>
+</div>
+<br />
+<br /><br /><br />
+<%= form_for @user, html: {:class => "login-form"} do |f| %>
+<div class="header" >
+	<h1>Register Below</h1>
+	<span>Fill out the form below and register yourself for the QA release notes.</span>
+</div>
+<div class="content">
+  <p>
+    <%= f.label :first_name %><br>
+    <%= f.text_field :first_name,class: 'input username' %>
+    <!--<%= f.select :first_name, [['Yes','Yes'],['No','No']] %>-->
+  </p>
+ 
+  <p>
+    <%= f.label :last_name %><br>
+    <%= f.text_field :last_name,class: 'input username' %>
+  </p>
+  <p>
+    <%= f.label :password %><br>
+    <%= f.password_field :password,class: 'input username' %>
+  </p>
+   <p>
+    <%= f.label :password_confirmation, "Confirm password"%><br>
+    <%= f.password_field :password_confirmation, class: 'input username'%>
+  </p>
+ 
+  <p>
+    <%= f.label :email %><br>
+    <%= f.text_field :email, class: 'input username' %>
+  </p>
+  </div>
+  <div class="footer">
+    <%= f.submit 'Register', class: 'button' %>
+    <%= link_to "Continue to login", login_path, class: 'register' %>
+  </div>
+<% end %>
