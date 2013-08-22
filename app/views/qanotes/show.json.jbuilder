@@ -1,0 +1,1 @@
+json.extract! @qanote, :clientdetail, :productname, :projectname, :currenttag, :oldtag, :servername, :date, :developername, :gatekeeper, :uploadedfromtag, :tasknodetail, :patchnamedetail, :diff1, :diff2, :signature, :testedby, :created_at, :updated_at

@@ -1,18 +1,53 @@
-SecondApp::Application.routes.draw do
-  resources :users
-  get '/register', to: 'users#new'
+Login::Application.routes.draw do
+  
+  get "tasks/index"
+  get "tasks/show"
+  get "tasks/new"
+  get "tasks/edit"
+  resources :clients do
+   resources :projects do
+    resources :tasks
+    end
+  end
 
-  resources :sessions, :only => [:new, :create, :destroy]
-  get 'login', to: 'sessions#new'
-  get 'logout', to: 'sessions#destroy'
-#  get "users/index"
-#  get "users/show"
-#  get "users/new"
+  get "pages/home"
+  get "pages/determinetask"
+  match "pages/determinetask", to: 'qanotes#new', via: 'post'
+  get "log_out" => "sessions#destroy", :as => "log_out"
+  get "log_in" => "sessions#new", :as => "log_in"
+  get "sign_up" => "users#new", :as => "sign_up"
+  root :to => "pages#home"
+  resources :users do
+    
+    get :add_admin_role, :on =>:member
+    put :add_admin_role, :on =>:member
+    get :remove_admin_role, :on => :member
+    put :remove_admin_role, :on => :member
+     get :add_rm_role, :on =>:member
+    put :add_rm_role, :on =>:member
+    get :remove_rm_role, :on => :member
+    put :remove_rm_role, :on => :member
+     get :add_quality_role, :on =>:member
+    put :add_quality_role, :on =>:member
+    get :remove_quality_role, :on => :member
+    put :remove_quality_role, :on => :member
+  end
+  resources :sessions
+  resources :qanotes
+ # get "projects/submit_client"
+  #put "projects/submit_client"
+  post "projects/submit_client"
+  post "qanotes/submit_server"
+ # match "projects/submit_client", to: 'projects#submit_client', via: 'post'
+
+  #get "say/hello"
+ # get "say/goodbye"
+  #get "say/filenames"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'users#index'
+  # root 'welcome#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -1,0 +1,128 @@
+<!-- <p id="notice"><%= notice %></p> -->
+<div id="wrapper">
+<div id="wrapper_header">
+<% title "-New task assigned"%>
+    <div class="header_top">
+	<div class="header_left">
+           <a href="/"><img src="http://www.kreatio.com/images/kreatio_logo.jpg" alt="logo"></a>
+	</div>
+	
+		<div class="aboutus_part">
+			<ul><% if current_user %>
+				<ul class="button-group">
+    <li><a href="" class="button primary pill">Logged in as <%= current_user.email %></a></li>
+    <li><%= link_to 'Dashboard',current_user, :class=>"button pill"%></li>
+    <li><a href="/log_out" class="button pill">LOGOUT</a></li>
+</ul>
+                  <% else %>
+    <a href="/log_in" class="button pill"></a>
+               <% end %>
+			</ul>
+		</div>
+		
+<!--	
+	<div class="header_right">
+        <% if current_user %>
+           Logged in as <%= current_user.email %>
+           <br>
+           <%= link_to 'New Qanote', new_qanote_path %>
+           <%= link_to 'Index of Qanotes', qanotes_path %>
+           <%= link_to "Log out", log_out_path %>
+        <% else %>
+           Please <%= link_to "log in", log_in_path %> to continue
+  <% end %>
+	</div> -->
+	
+</div><!--header_top-->
+    <div class="menucontainer">
+	<ul class="dropdown">
+		<% if current_user %>
+		<li class="">
+			<a href="/" title="HOME">HOME</a>
+		</li>
+		<li class="">
+			<%= link_to 'CREATE TAG' , :controller => :qanotes, :action => :new, :id => current_user.id %>
+		</li>
+		<li class="">
+		    <%= link_to 'INDEX OF QANOTES', :controller => :qanotes, :action => :index, :id => current_user.id %>
+	    </li>
+	    <li class="">
+		    <%= link_to 'USERS', users_path %>
+	    </li>
+	    <% end %>
+	</ul>
+</div>
+<!--kreatio_header-->
+</div>
+
+
+<div id="wrapper_container">
+	
+	<div class="demo_left_part">
+		<div align="center"><hr width="100%" NOSHADE SIZE="5"> </hr></div>
+		<br /><br /><br /><br />
+
+<div id="wrapper1">
+<h1> New task created </h1>
+
+<br/>
+<table class="center" border="1" style="border:1px solid black;width:90%;border-collapse:collapse;">
+<th style="padding:3px;">Task id : </th><td style="padding:3px;"><%= @task.task_name %></td>
+</tr>
+<tr>
+<th style="padding:3px;">Client name :</th><td style="padding:3px;"><%= Client.find_by_id(@task.client_id).client_name%></td>
+</tr>
+<tr>
+<th style="padding:3px;">Project Name :</th><td style="padding:3px;"><%= Project.find_by_id(@task.project_id).project_name %></td>
+</tr>
+<tr>
+<th style="padding:3px;">Description :</th><td style="padding:3px;"><%= @task.task_description %></td>
+</tr>
+<tr>
+<th style="padding:3px;">Assigned to :</th><td style="padding:3px;"><%= @task.task_assigned_to %></td>
+</tr>
+</table>
+</div>
+<div style="padding-bottom:100px;padding-top:100px;" align="center">
+<br><br><br>
+<%= link_to 'Create Release note',new_qanote_path(:id => current_user.id, :task_id=> @task.id), :class=>"button" %>
+
+        <br /><br /><br />	
+    <hr width="100%" NOSHADE SIZE="5"> </hr>
+	</div>
+
+</div> 
+</div>
+<!--kreatio_container-->
+
+<div id="wrapper_footer">
+<div class="footer_main_content">
+	<div class="footer_logo_part">
+		<a href="/"><img src="http://www.kreatio.com/images/footer_logo.jpg" alt="footer"></a>
+	</div><!--footer_logo_part-->
+	<div class="footer_rgt_part">
+		<div class="footer_abt_company">
+			<div class="footer_info">
+				<h4>ABOUT US</h4>
+				<ul>
+					<li>
+						Manu Dwivedi
+					</li>
+					<li>
+						Rituraj
+					</li>
+				</ul>
+			</div>
+		</div><!--footer_abt_company-->
+		<div class="footer_links_bottom">
+			<ul>
+				<br ><br /><br ><br /><br ><br />
+				<li style="background: none repeat scroll 0% 0% transparent;">
+					<a href="http://www.kreatio.com">© <%= Time.now.year %> KREATIO SOFTWARE PVT LTD. All rights reserved</a>
+				</li>
+			</ul>
+		</div><!--footer_links_bottom-->
+	</div><!--footer_rgt_part-->
+</div><!--footer_main_content-->
+</div>
+</div>

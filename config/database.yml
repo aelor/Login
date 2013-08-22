@@ -6,7 +6,7 @@
 
 development:
   adapter: postgresql
-  database: my_db
+  database: login_db
 #  timeout: 5000
   username: postgres
   password: postgres
@@ -27,7 +27,7 @@ test:
 
 production:
   adapter: postgresql
-  database: my_db
+  database: login_db
 #  timeout: 5000
   username: postgres
   password: postgres

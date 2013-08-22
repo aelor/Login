@@ -1,0 +1,37 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  clientdetail: MyString
+  productname: MyString
+  projectname: MyString
+  currenttag: MyString
+  oldtag: MyString
+  servername: MyString
+  date: 2013-07-24
+  developername: MyString
+  gatekeeper: MyString
+  uploadedfromtag: MyString
+  tasknodetail: MyString
+  patchnamedetail: MyString
+  diff1: MyString
+  diff2: MyString
+  signature: MyString
+  testedby: MyString
+
+two:
+  clientdetail: MyString
+  productname: MyString
+  projectname: MyString
+  currenttag: MyString
+  oldtag: MyString
+  servername: MyString
+  date: 2013-07-24
+  developername: MyString
+  gatekeeper: MyString
+  uploadedfromtag: MyString
+  tasknodetail: MyString
+  patchnamedetail: MyString
+  diff1: MyString
+  diff2: MyString
+  signature: MyString
+  testedby: MyString

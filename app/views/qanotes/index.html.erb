@@ -1,0 +1,148 @@
+<div id="wrapper">
+ <div id="wrapper_header">
+  <% title "List of QA release notes"%>
+		    <div class="header_top">
+					<div class="header_left">
+				           <a href="/"><img src="http://www.kreatio.com/images/kreatio_logo.jpg" alt="logo"></a>
+					</div>
+				
+					<div class="aboutus_part">
+						<ul>
+							<% if current_user %>
+							<ul class="button-group">
+			    				<li><a href="" class="button primary pill">Logged in as <%= current_user.email %></a></li>
+			                    <li><%= link_to 'Account',current_user, :class=>"button pill"%></li>
+			                    <li><a href="/log_out" class="button pill">LOGOUT</a></li>
+			                </ul>
+			                <% else %>
+			                    <a href="/log_in" class="button pill"></a>
+			               <% end %>
+						</ul>
+					</div>
+				
+			</div><!--header_top-->
+			<div class="menucontainer">
+				<ul class="dropdown">
+					<% if current_user %>
+					<li><a href="/" title="HOME">HOME</a></li>
+					<li><%= link_to 'CREATE NOTE', new_qanote_path %></li>
+					<li><%= link_to 'INDEX OF QANOTES', :controller => :qanotes, :action => :index, :id => current_user.id %></li>
+				    <li><%= link_to 'USERS', users_path %></li>
+				    <% end %>
+				</ul>
+			 </div><!--menucontainer-->
+  </div><!--wrapper header-->
+
+
+<div id="wrapper_container">
+	
+	<div class="demo_left_part">
+		<div align="center"></div>
+		<br /><br /><br /><br />
+		
+		<h1>Index of QA Release notes</h1>
+
+<%= form_tag qanotes_path, :method => 'get', :id => "qanotes_search" do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search by Client name", :name => nil, :class => "button" %>
+  </p>
+<br><br>
+<table id="mytable">
+  <thead>
+    <tr>
+    <th><%= sortable "clientdetail" %></th>
+  <!--<th>Productname</th>
+ -->  <th><%= sortable "projectname" %></th>
+      <th><%= sortable "currenttag"%></th>
+  <!--<th><%= sortable "oldtag"%></th>
+      <th><%= sortable "servername"%></th> -->
+      <th><%= sortable "date"%></th>
+      <th><%= sortable "developername"%></th>
+  <!--    <th>Gatekeeper</th>
+      <th>Uploadedfromtag</th>
+  <th><%= sortable "tasknodetail"%></th>
+      <th><%= sortable "patchnamedetail"%></th>
+  <!--<th>Diff1</th>
+      <th>Diff2</th>
+      <th>Signature</th>
+      <th>Testedby</th> -->
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @qanotes.each do |qanote| %>
+      <tr>
+       <td><%= qanote.clientdetail %></td>
+<!--    <td><%= qanote.productname %></td> -->
+        <td><%= qanote.projectname %></td>
+        <td><%= qanote.currenttag %></td>
+    <!--    <td><%= qanote.oldtag %></td>
+        <td><%= qanote.servername %></td>  --> 
+        <td><%= qanote.date %></td>
+        <td><%= qanote.developername %></td>
+    <!--    <td><%= qanote.gatekeeper %></td>
+        <td><%= qanote.uploadedfromtag %></td>
+    <td><%= qanote.tasknodetail %></td>
+        <td><%= qanote.patchnamedetail %></td>
+   <!--     <td><%= qanote.diff1 %></td>
+        <td><%= qanote.diff2 %></td>
+        <td><%= qanote.signature %></td>
+        <td><%= qanote.testedby %></td>
+   -->  <td><%= link_to 'Show', qanote, :class=>"button" %></td>
+        <% if current_user.has_role? :admin %>
+        <td><%= link_to 'Edit', edit_qanote_path(qanote), :class=>"button" %></td>
+        
+        <td><%= link_to 'Destroy', qanote, method: :delete, :class=>"button danger", data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<div class="apple_pagination">
+<%= will_paginate @users %>
+</div>
+<br>
+<% end %>
+<%= link_to 'New Qanote', new_qanote_path %>
+        <br /><br /><br /><br /><br /><br />	
+        <div align="center"></div>
+	</div>
+
+</div> 
+<!--kreatio_container-->
+
+<div id="wrapper_footer">
+<div class="footer_main_content">
+	<div class="footer_logo_part">
+		<a href="/"><img src="http://www.kreatio.com/images/footer_logo.jpg" alt="footer"></a>
+	</div><!--footer_logo_part-->
+	<div class="footer_rgt_part">
+		<div class="footer_abt_company">
+			<div class="footer_info">
+				<h4>ABOUT US</h4>
+				<ul>
+					<li>
+						Manu Dwivedi
+					</li>
+					<li>
+						Rituraj
+					</li>
+				</ul>
+			</div><!--footer_info-->
+		</div><!--footer_abt_company-->
+		<div class="footer_links_bottom">
+			<ul>
+				<br ><br /><br ><br /><br ><br />
+				<li style="background: none repeat scroll 0% 0% transparent;">
+					<a href="http://www.kreatio.com">© 2013 KREATIO SOFTWARE PVT LTD. All rights reserved</a>
+				</li>
+			</ul>
+		</div><!--footer_links_bottom-->
+	 </div><!--footer_rgt_part-->
+  </div><!--footer_main_content-->
+</div><!--wrapper footer-->
+</div>

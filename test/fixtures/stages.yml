@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  stage_detail: MyString
+  qanote_id: 
+
+two:
+  stage_detail: MyString
+  qanote_id: 

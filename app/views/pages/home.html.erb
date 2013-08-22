@@ -1,0 +1,109 @@
+<div id="wrapper">
+<div id="wrapper_header">
+		
+	 <div class="header_top">
+		 <div class="header_left">
+			  <a href="/"><img src="http://www.kreatio.com/images/kreatio_logo.jpg" alt="logo"></a>
+		 </div>
+				
+	      <div class="aboutus_part">
+			   <% if current_user %>
+				  <ul class="button-group">
+			           <li><a href="" class="button primary pill">Logged in as <%= current_user.email %></a></li>
+			           <li><%= link_to 'Dashboard',current_user, :class=>"button pill"%></li>
+			           <li><a href="/log_out" class="button pill">LOGOUT</a></li>
+			      </ul>
+			   <% else %>
+			      <a href="/log_in" class="button pill">LOGIN HERE</a>
+			   <% end %>
+		 </div>
+			
+	 </div><!--header_top-->
+    <div class="menucontainer">
+	<ul class="dropdown">
+		<% if current_user %>
+		<li class="">
+			<a href="/" title="HOME">HOME</a>
+		</li>
+		<li class="">
+			<%= link_to 'CREATE NOTE', new_qanote_path %>
+		</li>
+		<li class="">
+			
+		    <%= link_to 'INDEX OF QANOTES', :controller => :qanotes, :action => :index, :id => current_user.id %>
+	
+	    </li>
+	    <li class="">
+		    <%= link_to 'USERS', users_path %>
+	    </li>
+	    <% end %>
+	</ul>
+</div>
+<!--kreatio_header-->
+    <div id="slides">
+	<div class="slides_container" style="overflow: hidden; position: relative; display: block;">
+	  
+
+			<div class="qanote_image">
+				<%= image_tag("qanote.png") %>
+            </div>
+		
+		
+	   </div>
+   
+</div>
+</div>
+
+<div id="wrapper_container">
+	
+	<div class="demo_left_part">
+		<div align="center"></div>
+		
+		
+		    <div class="box">
+		    	<h1>Welcome to the Quality Assurance Management System</h1>
+				<p>
+				   QAMS provides the feature to create and save new tags and also 
+				   notifies the administrators when a new tag is created. This not 
+				   only help in maintaining a record or QA release notes but also 
+				   help in the proper management and assignment of tasks to employees
+				</p>
+			</div>	
+        
+        <div align="center"></div>
+	</div>
+
+</div>
+<!--kreatio_container-->
+
+<div id="wrapper_footer">
+<div class="footer_main_content">
+	<div class="footer_logo_part">
+		<a href="/"><img src="http://www.kreatio.com/images/footer_logo.jpg" alt="footer"></a>
+	</div><!--footer_logo_part-->
+	<div class="footer_rgt_part">
+		<div class="footer_abt_company">
+			<div class="footer_info">
+				<h4>ABOUT US</h4>
+				<ul>
+					<li>
+						Manu Dwivedi
+					</li>
+					<li>
+						Rituraj
+					</li>
+				</ul>
+			</div>
+		</div><!--footer_abt_company-->
+		<div class="footer_links_bottom">
+			<ul>
+				<br ><br /><br ><br /><br ><br />
+				<li style="background: none repeat scroll 0% 0% transparent;">
+					<a href="http://www.kreatio.com">© <%= Time.now.year %> KREATIO SOFTWARE PVT LTD. All rights reserved</a>
+				</li>
+			</ul>
+		</div><!--footer_links_bottom-->
+	</div><!--footer_rgt_part-->
+</div><!--footer_main_content-->
+</div>
+</div>

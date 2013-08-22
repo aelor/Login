@@ -1,0 +1,4 @@
+
+
+<%= collection_select(:project, :id, Project.where(client_name: params[:client_name]).all, :project_name, :project_name, {:prompt => true},{:class=>'styled-select', :onkeyup =>"updateProject()"}) %>
+

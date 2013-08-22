@@ -1,32 +1,85 @@
-<%= stylesheet_link_tag "posts.css.scss" %>
-<div>
-	<% if flash[:status] == FALSE%>
-	<p><%= flash[:alert] %></p>
-	<% end %>
-</div>
-<br />
-<br /><br /><br /><br /><br /><br /><br />
-<%= form_for(:session, :url => sessions_path, html: {:class => "login-form"}) do |f|%>
-<div class="header" >
-	<h1>Login Form</h1>
-	<span>Fill out the login form below to access the Quality Assurance release note control panel.</span>
-</div>
-<div class="content">
+<div id="wrapper">
+	
 
-	<%= f.label :email %>
-	<%= f.text_field :email, class: 'input username' %>
-	<div class="user-icon"></div>
+<%= title " - Login"%>
 
-<br /><br />
+<div id="wrapper_header">
 
-	<%= f.label :password  %>
-	<%= f.password_field :password, class: 'input username' %>
-	<div class="pass-icon"></div>
-
+    <div class="newheader_top">
+	<div class="header_left">
+           <a href="/"><img src="http://www.kreatio.com/images/kreatio_logo.jpg" alt="logo" height="50px;"></a>
+	</div>
+	
+    <div class="header_right">
+    	 <%=image_tag("QA_Logo.jpg",:id =>"img_preview")%>
+          <h1>management system</h1>
+    
+    </div>	
+</div><!--header_top-->
+    
+<!--kreatio_header-->
+   
 </div>
-<div class="footer">
-	<%= f.submit 'Login', class: 'button' %>
-	<%= link_to "Register", register_path, class: 'register' %>
-	<!--<input type="submit" name="submit" value="Register" class="register" />-->
+
+
+<div id="content">
+	
+				<script type="text/javascript">
+		           $(document).ready(function() {
+				   $('#emailid').focus();
+				       $("#loginform").validationEngine('attach');
+					});
+					
+			    </script>
+		
+			
+			<%= form_tag sessions_path,:id=>"loginform" do %>
+			<h2>Login</h2>
+			  <p>
+			    <%= label_tag :email %><br />
+			    <%= text_field_tag :email, params[:email], :id =>"emailid", :class=>"validate[required,custom[email]]"%>
+			  </p>
+			  <p>
+			    <%= label_tag :password %><br />
+			    <%= password_field_tag :password %>
+			  </p>
+			  <br />
+			  <p>
+			  <%= submit_tag "Log in", :class=>"button" %>
+			  </p>
+			<% end %>
+
+</div> 
+<!--kreatio_container-->
+
+<div id="wrapper_footer">
+<div class="footer_main_content">
+	<div class="footer_logo_part">
+		<a href="/"><img src="http://www.kreatio.com/images/footer_logo.jpg" alt="footer"></a>
+	</div><!--footer_logo_part-->
+	<div class="footer_rgt_part">
+		<div class="footer_abt_company">
+			<div class="footer_info">
+				<h4>ABOUT US</h4>
+				<ul>
+					<li>
+						Manu Dwivedi
+					</li>
+					<li>
+						Rituraj
+					</li>
+				</ul>
+			</div>
+		</div><!--footer_abt_company-->
+		<div class="footer_links_bottom">
+			<ul>
+				<br ><br /><br ><br /><br ><br />
+				<li style="background: none repeat scroll 0% 0% transparent;">
+					<a href="http://www.kreatio.com">© 2013 KREATIO SOFTWARE PVT LTD. All rights reserved</a>
+				</li>
+			</ul>
+		</div><!--footer_links_bottom-->
+	</div><!--footer_rgt_part-->
+</div><!--footer_main_content-->
 </div>
-<% end %>
+</div>

@@ -1,37 +1,41 @@
-#encoding: utf-8
 class User < ActiveRecord::Base
-  require 'digest/md5'
+  rolify
+  has_many :qanotes
+  has_many :tasks
+  attr_accessible :email, :password, :password_confirmation, :role_id
   
-  attr_accessible :email, :first_name, :last_name, :password_confirmation
+  attr_accessor :password
   before_save :encrypt_password
-
-
-validates :first_name, presence: true,
-                     length: { minimum: 3, allow_blank: true }
-
-validates :last_name, presence: true,
-                     length: { minimum: 6, allow_blank: true }
-    
-validates :password, presence: true,
-                     length: { minimum: 6, allow_blank: true },
-                     confirmation: true
   
-validates :password_confirmation, presence: true
-
-validates :email, presence: true, uniqueness: true                  
- 
- 
-def encrypt_password
-   self.password = Digest::MD5.hexdigest(self.password).encode('UTF-8')
- end
-
-def self.validate_login(email, password)
-  user = User.find_by_email(email)
+  validates_confirmation_of :password
+  validates_presence_of :password
+  validates :password, length: {minimum: 6}
+  validates :email, :format => { :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :on => :create }, 
+            :uniqueness=> true, :presence=> true
+  validates_presence_of :roles, :on => :create
   
-  if user && user.password == Digest::MD5.hexdigest(password)
-    user 
+  
+  def self.authenticate(email, password)
+    user = find_by_email(email)
+    if user && user.password_hash == BCrypt::Engine.hash_secret(password, user.password_salt)
+      user
+    else
+      nil
+    end
+  end
+  
+  def encrypt_password
+    if password.present?
+      self.password_salt = BCrypt::Engine.generate_salt
+      self.password_hash = BCrypt::Engine.hash_secret(password, password_salt)
+    end
+  end
+  
+  def self.search(search)
+  if search
+    where('email LIKE ?', "%#{search}%")
   else
-    nil
+    User.all
   end
 end
 end

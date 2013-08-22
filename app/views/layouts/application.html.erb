@@ -1,14 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>SecondApp</title>
+  
+
+<title>QAMS<%= yield(:title) || "- Create and update QA release notes" %></title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
+  <%= yield :head %>
 </head>
-<body>
+<body >
+	
+<!-- <div id="user_nav">
+  <% if current_user %>
+    Logged in as <%= current_user.email %>.
+    <%= link_to "Log out", log_out_path %>
+  <% else %>
+    <%= link_to "Sign up", sign_up_path %> or
+    <%= link_to "log in", log_in_path %>
+  <% end %>
+</div> 
+
+<% flash.each do |name, msg| %>
+  <%= content_tag :div, msg, :id => "flash_#{name}" %>
+<% end %> -->
+<div id="wrapper">
+<% flash.each do |key, value| %>
+       <div id="flash"><div class="alert alert-<%= key %>"><%= value %></div></div>
+<% end %>
 
 <%= yield %>
-
+</div>
 </body>
 </html>

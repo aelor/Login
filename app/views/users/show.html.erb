@@ -1,4 +1,111 @@
-<h1><%= $user_first_name %></h1>
-<h1>you are not welcome </h1>
-<%= link_to "Logout", logout_path %>
+<div id="wrapper">
+<div id="wrapper_header">
+
+  <div class="header_top">
+		<div class="header_left">
+		    <a href="/"><img src="http://www.kreatio.com/images/kreatio_logo.jpg" alt="logo"></a>
+		</div>
+			
+		<div class="aboutus_part">
+			<% if current_user %>
+				<ul class="button-group">
+		           <li><a href="" class="button primary pill">Logged in as <%= current_user.email %></a></li>
+		           <li><%= link_to 'Account',current_user, :class=>"button pill"%></li>
+		           <li><a href="/log_out" class="button pill">LOGOUT</a></li>
+		        </ul>
+		    <% else %>
+		        <a href="/log_in" class="button pill"></a>
+		    <% end %>
+		</div>
+		
+   </div><!--header_top-->
+   <div class="menucontainer">
+		<ul class="dropdown">
+			<% if current_user %>
+			<li class="">
+				<a href="/" title="HOME">HOME</a>
+			</li>
+			<li class="">
+	            <%= link_to 'CREATE NOTE', new_qanote_path %></li>
+			<li class="">
+			    <%= link_to 'INDEX OF QANOTES', :controller => :qanotes, :action => :index, :id => current_user.id %>
+		    </li>
+		    <li class="">
+			    <%= link_to 'USERS', users_path %>
+		    </li>
+		    <% end %>
+		 </ul>
+   </div>
+<!--kreatio_header-->
+    <div id="slides">
+	<div class="slides_container" style="overflow: hidden; position: relative; display: block;">
+	  
+
+			<div class="qanote_image">
+				<img src="/assets/qanote.png" />
+            </div>
+		
+		
+	   </div>
+   
+</div>
+</div>
+
+
+<div id="wrapper_container">
+	
+	<div class="demo_left_part">
+		<div align="center"></div>
+		
+              <div class="box">
+				   <h1>Welcome to your dashboard !</h1>
+		
+		            <h3 style="color: grey;font-size: 20px;">What do you want to do today <%= current_user.email %> ?</h3>
+		            <% if (current_user.has_role? :admin) %>
+		        		<%= link_to 'Create a new task', clients_path, :class=>"button pill" %>
+		            <% else %>
+		                <br /><br /><br />
+		             <h3 style="color: grey;font-size: 15px;">Well,you may like to see the release notes that you have created</h3>
+		                <%= link_to 'View all release notes by me', :controller => :qanotes, :action => :index, :id => current_user.id %>
+		               <%= link_to 'Edit profile', edit_user_path(current_user) %>
+		            <% end %>
+
+	          </div>
+        <div align="center"></div>
+	</div>
+
+</div> 
+<!--kreatio_container-->
+
+<div id="wrapper_footer">
+<div class="footer_main_content">
+	<div class="footer_logo_part">
+		<a href="/"><img src="http://www.kreatio.com/images/footer_logo.jpg" alt="footer"></a>
+	</div><!--footer_logo_part-->
+	<div class="footer_rgt_part">
+		<div class="footer_abt_company">
+			<div class="footer_info">
+				<h4>ABOUT US</h4>
+				<ul>
+					<li>
+						Manu Dwivedi
+					</li>
+					<li>
+						Rituraj
+					</li>
+				</ul>
+			</div>
+		</div><!--footer_abt_company-->
+		<div class="footer_links_bottom">
+			<ul>
+				<br ><br /><br ><br /><br ><br />
+				<li style="background: none repeat scroll 0% 0% transparent;">
+					<a href="http://www.kreatio.com">© 2013 KREATIO SOFTWARE PVT LTD. All rights reserved</a>
+				</li>
+			</ul>
+		</div><!--footer_links_bottom-->
+	</div><!--footer_rgt_part-->
+</div><!--footer_main_content-->
+</div>
+</div>
 

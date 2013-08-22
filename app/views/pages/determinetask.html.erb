@@ -1,0 +1,97 @@
+<div id="wrapper">
+<div id="wrapper_header">
+
+	 <div class="header_top">
+		     <div class="header_left">
+			     <a href="/"><img src="http://www.kreatio.com/images/kreatio_logo.jpg" alt="logo"></a>
+		     </div>
+				
+		     <div class="aboutus_part">
+			     <% if current_user %>
+					 <ul class="button-group">
+					     <li><a href="" class="button primary pill">Logged in as <%= current_user.email %></a></li>
+					     <li><%= link_to 'Dashboard',current_user, :class=>"button pill"%></li>
+					     <li><a href="/log_out" class="button pill">LOGOUT</a></li>
+					 </ul>
+			     <% else %>
+			         <a href="/log_in" class="button pill"></a>
+			     <% end %>
+		     </div>
+					
+			<!--	
+				<div class="header_right">
+			        <% if current_user %>
+			           Logged in as <%= current_user.email %>
+			           <br>
+			           <%= link_to 'New Qanote', new_qanote_path %>
+			           <%= link_to 'Index of Qanotes', qanotes_path %>
+			           <%= link_to "Log out", log_out_path %>
+			        <% else %>
+			           Please <%= link_to "log in", log_in_path %> to continue
+			  <% end %>
+				</div> -->
+				
+	 </div><!--header_top-->
+	 <div class="menucontainer">
+		<ul class="dropdown">
+			<% if current_user %>
+				<li><a href="/" title="HOME">HOME</a></li>
+				<li><%= link_to 'CREATE TAG', 'pages/determinetask' %></li>
+				<li><%= link_to 'INDEX OF QANOTES', :controller => :qanotes, :action => :index, :id => current_user.id %></li>
+			    <li><%= link_to 'USERS', users_path %></li>
+		    <% end %>
+		</ul>
+	 </div><!--menucontainer-->
+</div>
+
+<div id="wrapper_container">
+	
+	<div class="demo_left_part">
+		    <div style="padding-bottom: 200px; padding-top: 100px;">
+			<div class="box">
+						<h1>Just one more step !</h1><br>
+                        <h3 style="font-size: 20px;color: grey;">We would like to know what task id are you searching for ?</h3><br><br>
+                        <%= form_tag( :id=> current_user.id) do %>
+						<b style="font-size: 15px;color: grey"> select a task &nbsp;&nbsp;</b><%= select_tag(:task_id, options_from_collection_for_select(current_user.tasks, :id, :task_name), {:class=>'styled-select'}) %>
+						&nbsp;&nbsp;<%= submit_tag 'search', :class=>"button" %>
+						<%end%>
+						
+						</div>
+			</div>
+        
+	</div>
+
+</div> 
+<!--kreatio_container-->
+
+<div id="wrapper_footer">
+<div class="footer_main_content">
+	<div class="footer_logo_part">
+		<a href="/"><img src="http://www.kreatio.com/images/footer_logo.jpg" alt="footer"></a>
+	</div><!--footer_logo_part-->
+	<div class="footer_rgt_part">
+		<div class="footer_abt_company">
+			<div class="footer_info">
+				<h4>ABOUT US</h4>
+				<ul>
+					<li>
+						Manu Dwivedi
+					</li>
+					<li>
+						Rituraj
+					</li>
+				</ul>
+			</div>
+		</div><!--footer_abt_company-->
+		<div class="footer_links_bottom">
+			<ul>
+				<br ><br /><br ><br /><br ><br />
+				<li style="background: none repeat scroll 0% 0% transparent;">
+					<a href="http://www.kreatio.com">© 2013 KREATIO SOFTWARE PVT LTD. All rights reserved</a>
+				</li>
+			</ul>
+		</div><!--footer_links_bottom-->
+	</div><!--footer_rgt_part-->
+</div><!--footer_main_content-->
+</div>
+</div>

@@ -1,0 +1,76 @@
+<table>
+	<tr><td><%= image_tag "kreatio_logo.jpg"%></td><td><h1>Qa Realease note</h1></td><td>T115</td></tr>
+</table>
+		<h3><u>Release Information</u></h3>
+		<br/>
+		<table border="1" style="border:1px solid black;width:90%;border-collapse:collapse;background-color: #ffffff;">
+		<th style="padding:3px;">Client Details : </th><td style="padding:3px;"><%= @qanote.clientdetail %></td>
+		</tr>
+		<tr>
+		<th style="padding:3px;">Product Name :</th><td style="padding:3px;"><%= @qanote.productname %></td>
+		</tr>
+		<tr>
+		<th style="padding:3px;">Project Name :</th><td style="padding:3px;"><%= @qanote.projectname %></td>
+		</tr>
+		<tr>
+		<th style="padding:3px;">Current Tag :</th><td style="padding:3px;"><%= @qanote.currenttag %></td>
+		</tr>
+		<tr>
+		<th style="padding:3px;">Old Tag :</th><td style="padding:3px;"><%= @qanote.oldtag %></td>
+		</tr>
+		<tr>
+		<th style="padding:3px;">Server name :</th><td style="padding:3px;"><%= @qanote.servername %></td>
+		</tr>
+		<tr>
+		<th style="padding:3px;">Date :</th><td style="padding:3px;"><%= @qanote.date %></td>
+		</tr>
+		</table>
+		<br/>
+		<table class="center" style="width:80%">
+		<tr>
+		<th style="padding:3px;">Developer name : </th><td style="padding:3px;"><%= @qanote.developername %></td>
+		</tr>
+		<tr>
+		<th style="padding:3px;">Gatekeeper : </th><td style="padding:3px;"><%= @qanote.gatekeeper %></td>
+		</tr>
+		<tr>
+		<th style="padding:3px;">Uploaded from Tag (Y/N) :</th><td style="padding:3px;"><%= @qanote.uploadedfromtag %></td>
+		</tr>
+		</table>
+		<br/>
+		<h3><u>Released Details</u></h3><br />
+		<table class="center" border="1" style="border:1px solid black;width:90%;border-collapse:collapse;">
+		<th style="padding:3px;">Task No. Details : </th><th style="padding: 3px;">Patch name details</th>
+		</tr>
+		<tr>
+		<td style="padding:3px;"><%= @qanote.tasknodetail %></td><td style="padding:3px;"><%= @qanote.patchnamedetail %></td>
+		</tr>
+		</table>
+		<br /><br />
+		<div class="text"><u>Code Difference Details</u></div>
+		<table class="center" style="width:80%">
+		<ul>
+		<tr>
+		<td style="padding:3px;"><li>Current Application and old tag difference taken (Y/N):</li></td><td style="padding:3px;"><%= @qanote.diff1 %></td>
+		</tr>
+		<tr>
+		<td style="padding:3px;"><li>Current Application and new tag difference taken (Y/N):</li></td><td style="padding:3px;"><%= @qanote.diff2 %></td>
+		</tr>
+		<tr>
+		<td style="padding:3px;"><li>Signature :</li></td><td style="padding:3px;"><%= @qanote.signature %></td>
+		</tr>
+		<tr>
+		<td style="padding:3px;">Tested by :</td><td style="padding:3px;"><%= @qanote.testedby %></td>
+		</tr>
+		</table>
+		<br /><br />
+		<div class="text">Project Manager:</div>
+		<div class="text">Uploaded under supervision of:</div>
+		<br /><br /><br /><br />
+		
+		<div class="footerfont" align="center">
+			&copy;Kreatio Software, 2012 <br>
+			Company Confidential. Unauthorized reproduction & communication strictly prohibited.
+			</div>
+			<br/><br/>
+		</div>

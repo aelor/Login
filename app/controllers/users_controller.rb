@@ -1,34 +1,116 @@
 class UsersController < ApplicationController
-  before_filter :check_login, :only => [:index]
+
+before_action :signed_in
+
+def new
+  @user = User.new
+  authorize! :create, @user, :message => "Not authorized to create a new user."
+end
+
+def index
+  @users = User.all.search(params[:search]).paginate(:per_page => 10, :page => params[:page])
+end
+
+def show
+  @user = User.find(params[:id])
+  if @user != current_user 
+    authorize! :new, :message => "Not authorized to see other users profile."
+  end
+end
   
-  def index
+def edit
+  @user = User.find(params[:id])
+  if @user != current_user
+   authorize! :edit, @user, :message => "Not authorized to edit a user."
+  end
+end
+
+def create
+  authorize! :create, @user, :message => "Not authorized to create a new user."
+
+  #params[:user_id].destroy :role
+
+  @user = User.new(params[:user])
+   roles = Role.find(params[:user][:role_ids]) rescue []
+    @user.roles = roles
+  if @user.save
+    redirect_to root_url
+    flash[:success] = "User successfully created as #{Role.find_by_id(roles).name}!"
+  else
+    render "new"
   end
 
-  def show
-  end
+end
 
-  def new
-    @user = User.new
-  end
+def update
   
-  def create
-    
-    @user = User.new
-    @user.first_name = params[:user][:first_name]
-    @user.last_name = params[:user][:last_name]
-    @user.password = params[:user][:password]
-    @user.email = params[:user][:email]
-    @user.password_confirmation = params[:user][:password_confirmation]
-    #@user = User.new(params[:user])
-    
-    if @user.save
-      flash[:status] = TRUE
-      flash[:alert] = "Congratulations ! you have successfully registered."
+  #params[:user_id].destroy :role
+    @user = User.find(params[:id])
+    roles = Role.find(params[:user][:role_ids]) rescue []
+    @user.roles = roles
+  if @user != current_user
+   authorize! :update, @user, :message => "Not authorized to edit user."
+  else
+    if @user.update_attributes(params[:user])
+      flash[:success] = "Account updated"
+      redirect_to root_url
     else
-      flash[:status] = FALSE
-      flash[:alert] = @user.errors.full_messages
+      render 'edit'
     end
-    
-    redirect_to register_path
   end
+end
+
+def destroy
+  @user = User.find(params[:id])
+  @user.destroy
+  
+  redirect_to edit_user_path
+  flash[:success] = "User successfully deleted !"
+end
+
+def add_admin_role
+  @user = User.find(params[:id])
+  @user.add_role "admin"
+  
+  redirect_to edit_user_path
+  flash[:success] = "Successfully promoted to admin"
+end
+
+def remove_admin_role
+  @user = User.find(params[:id])
+  @user.remove_role "admin"
+  @user.add_role "normaluser"
+  redirect_to edit_user_path, :notice => "Removed permissions as admin"
+end
+
+def add_rm_role
+  @user = User.find(params[:id])
+  @user.add_role "rm"
+  
+  redirect_to edit_user_path
+  flash[:success] = "Successfully changed permissions to Reporting manager !"
+end
+
+def remove_rm_role
+  @user = User.find(params[:id])
+  @user.remove_role "rm"
+  @user.add_role "normaluser"
+  redirect_to edit_user_path, :notice => "Removed permissions as reporting manager"
+end
+
+def add_quality_role
+  @user = User.find(params[:id])
+  @user.add_role "quality"
+  
+  redirect_to edit_user_path 
+  flash[:success] = "Successfully changed permissions to quality manager !"
+end
+
+def remove_quality_role
+  @user = User.find(params[:id])
+  @user.remove_role "quality"
+  @user.add_role "normaluser"
+  redirect_to edit_user_path, :notice => "Removed permissions as quality manager"
+end
+
 end

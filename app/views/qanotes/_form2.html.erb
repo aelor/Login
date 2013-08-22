@@ -1,0 +1,64 @@
+	<%= form_for  @qanote do |f| %>
+		  <% if @qanote.errors.any? %>
+		    <div id="error_explanation">
+		      <h2><%= pluralize(@qanote.errors.count, "error") %> prohibited this qanote from being saved:</h2>
+		
+		      <ul>
+		      <% @qanote.errors.full_messages.each do |msg| %>
+		        <li><%= msg %></li>
+		      <% end %>
+		      </ul>
+		    </div>
+    <% end %>
+		  <!-- some script to display patch name-->
+				<script type="text/javascript" charset="utf-8">
+				
+				    function updateQanote_patchnamedetail(){
+				        qanote_tasknodetail = document.getElementById("qanote_tasknodetail").value;
+				        document.getElementById("qanote_patchnamedetail").value = qanote_tasknodetail+".patch";
+				    }
+				
+				</script>
+		   <!--end of script-->
+	<h2>Enter new qanote information</h2>
+<hr class="style-six"></hr>
+	<h3>Enter the release information below</h3>
+<div class="content">
+	<table>
+  <tr><td><div class="text">Client details:  </td><td><%= f.text_field :clientdetail, class: 'input username'%><br/></td></tr></div>
+  <tr><td><div class="text">Product name:  </td><td><%= f.select :productname, [['Kreatio','Kreatio'],['Webnish','Webnish']] %><br/></div>
+  <tr><td><div class="text">Project name:  </td><td><%= f.text_field :projectname, class: 'input username'%><br/></div></td></tr>
+  <tr><td><div class="text">Current tag:  </td><td><%= f.text_field :currenttag, class: 'input username'%><br/></div></td></tr>
+  <tr><td><div class="text">Old tag:  </td><td><%= f.text_field :oldtag, class: 'input username'%><br/></div></td></tr>
+  <tr><td><div class="text">Server name:  </td><td><%= f.select :servername, [['Stage','Stage'],['Test','Test'],['Live','Live']], class: 'input username'%><br/></div></td></tr>
+  <tr><td><div class="text">Date:</td><td><%= f.date_select :date, class: 'input username'%><br/></td></tr>
+  <tr><td><div class="text">Developer name:</td><td><%= f.text_field :developername, class: 'input username'%><br/></div></td></tr>
+  <tr><td><div class="text">Gatekeeper:</td><td><%= f.text_field :gatekeeper, class: 'input username'%><br/></div></td></tr>
+  <tr><td><div class="text">Uploaded from tag:</td><td><%= f.select :uploadedfromtag, [['Yes','Yes'],['No','No']], :class=>"button"%><br/></div></td></tr>
+  </table>
+  <br />
+    <hr class="style-six"></hr>
+<div class="header">
+    <h3>Enter the Released details below</h3>
+</div>
+  <table>
+  <tr><td><div class="text">Task No.details:  </td><td><%= f.text_field :tasknodetail, :onkeyup=>"updateQanote_patchnamedetail()"%><br/></td></tr></div>
+  <tr><td><div class="text">Patch name details:  </td><td><%= f.text_field :patchnamedetail%><br/></div>
+  </table>
+  <br /><br />
+    <hr class="style-six"></hr>
+  <br />
+ <div class="header">
+    <h3>Enter the Code difference details below</h3>
+</div>
+<table>
+  <tr><td><div class="text">Current application and old tag difference taken:</td><td><%= f.select :diff1, [['Yes','Yes'],['No','No']], class: 'input username'%><br/></div></td></tr>
+  <tr><td><div class="text">Current application and new tag difference taken:</td><td><%= f.select :diff2, [['Yes','Yes'],['No','No']], class: 'input username'%><br/></div></td></tr>
+  <tr><td><div class="text">Signature:  </td><td><%= f.text_field :signature, class: 'input username'%><br/></td></tr></div>
+  <tr><td><div class="text">Tested by:  </td><td><%= f.text_field :testedby, class: 'input username'%><br/></td></tr></div>
+</table>
+</div>
+<div class="footer">
+    <%= f.submit 'Submit', class: 'button' %>&nbsp;<%= link_to 'Back',{:controller => :pages, :action => :home}%>
+</div>
+<% end %>

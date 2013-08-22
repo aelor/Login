@@ -11,152 +11,119 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130715041014) do
+ActiveRecord::Schema.define(version: 20130820055825) do
 
-  create_table "attendances", force: true do |t|
-    t.string   "on_time"
-    t.integer  "employee_detail_id"
-    t.integer  "schedule_id"
+  create_table "clients", force: true do |t|
+    t.string   "client_name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "documents", force: true do |t|
-    t.string  "document_name"
-    t.string  "document_path"
-    t.boolean "status",        default: true
-  end
-
-  create_table "employee_details", force: true do |t|
-    t.string   "title"
-    t.string   "emp_name"
-    t.string   "last_name"
-    t.string   "middle_name"
-    t.string   "pan_number"
-    t.string   "pf_number"
-    t.string   "gender"
-    t.string   "martial_status"
-    t.date     "dob"
-    t.date     "date_of_join"
-    t.integer  "role_id"
-    t.string   "contact_no"
-    t.string   "official_mailid"
-    t.string   "password"
-    t.string   "manager_mailid"
-    t.string   "empl_id"
+  create_table "lives", force: true do |t|
+    t.string   "live_detail"
+    t.integer  "qanote_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "tl_mailid",           limit: nil
-    t.string   "reset_password_code", limit: nil
-    t.string   "active_resetcode",    limit: nil, default: "False",  null: false
-    t.boolean  "lock"
-    t.string   "active",                          default: "Active"
   end
 
-  create_table "leave_details", force: true do |t|
-    t.integer "employee_detail_id"
-    t.integer "leave_type_id"
-    t.float   "total_leaves"
-    t.float   "balance"
-    t.float   "availed"
-    t.float   "carry_forward"
-    t.integer "year"
-    t.float   "total_leave_balance"
-  end
+  add_index "lives", ["qanote_id"], name: "index_lives_on_qanote_id", using: :btree
 
-  create_table "leave_records", force: true do |t|
-    t.integer "leave_type_id"
-    t.integer "employee_detail_id"
-    t.integer "year"
-    t.date    "from_date"
-    t.date    "to_date"
-    t.string  "reason"
-    t.string  "status",             default: "Pending", null: false
-    t.float   "no_of_days"
-  end
-
-  create_table "leave_types", force: true do |t|
-    t.string "leave_types"
-    t.float  "total_leaves"
-  end
-
-  create_table "newtable", id: false, force: true do |t|
-    t.text    "name"
-    t.decimal "salary"
-  end
-
-  create_table "personal_details", force: true do |t|
-    t.integer  "employee_detail_id"
-    t.integer  "pg_year"
-    t.integer  "ug_year"
-    t.integer  "diploma_year"
-    t.integer  "puc_year"
-    t.integer  "tenth_year"
-    t.date     "anniversary_date"
-    t.date     "p_dob"
-    t.string   "local_address"
-    t.string   "permanent_address"
-    t.string   "changeof_address"
-    t.string   "personalmail_id"
-    t.string   "emergency_contact"
-    t.string   "blood_group"
-    t.string   "father_name"
-    t.string   "mother_name"
-    t.string   "company_name"
-    t.string   "designation"
-    t.string   "experience"
-    t.string   "pg"
-    t.string   "ug"
-    t.string   "diploma"
-    t.string   "puc"
-    t.string   "tenth"
-    t.string   "guardian"
-    t.string   "relationship"
-    t.string   "company_name2"
-    t.string   "designation2"
-    t.string   "experience2"
+  create_table "pages", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "projects", force: true do |t|
+    t.string   "project_name"
+    t.integer  "client_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "client_name"
+  end
+
+  add_index "projects", ["client_id"], name: "index_projects_on_client_id", using: :btree
+
+  create_table "qanotes", force: true do |t|
+    t.string   "clientdetail"
+    t.string   "productname"
+    t.string   "projectname"
+    t.string   "currenttag"
+    t.string   "oldtag"
+    t.string   "servername"
+    t.date     "date"
+    t.string   "developername"
+    t.string   "gatekeeper"
+    t.string   "uploadedfromtag"
+    t.string   "tasknodetail"
+    t.string   "patchnamedetail"
+    t.string   "diff1"
+    t.string   "diff2"
+    t.string   "signature"
+    t.string   "testedby"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+    t.integer  "task_id"
   end
 
   create_table "roles", force: true do |t|
-    t.string "role_name"
-  end
-
-  create_table "schedules", force: true do |t|
-    t.date     "schedule_date"
-    t.integer  "employee_detail_id"
-    t.integer  "discussion"
-    t.string   "topic"
-    t.string   "category"
-    t.text     "assignment"
+    t.string   "name"
+    t.integer  "resource_id"
+    t.string   "resource_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "techup_feedbacks", force: true do |t|
-    t.string   "trainers_knowledge_on_the_topic"
-    t.string   "attitude_and_delivery_method"
-    t.string   "communication_skills"
-    t.string   "training_feedback"
-    t.string   "query_handling_ability"
-    t.string   "content_of_the_training"
-    t.string   "session_preparation"
-    t.integer  "employee_detail_id"
-    t.integer  "schedule_id"
-    t.integer  "attendance_id"
-    t.text     "comments"
+  add_index "roles", ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id", using: :btree
+  add_index "roles", ["name"], name: "index_roles_on_name", using: :btree
+
+  create_table "stages", force: true do |t|
+    t.string   "stage_detail"
+    t.integer  "qanote_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "stages", ["qanote_id"], name: "index_stages_on_qanote_id", using: :btree
+
+  create_table "tasks", force: true do |t|
+    t.string   "task_name"
+    t.string   "task_description"
+    t.string   "task_assigned_to"
+    t.integer  "client_id"
+    t.integer  "project_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "tasks", ["client_id"], name: "index_tasks_on_client_id", using: :btree
+  add_index "tasks", ["project_id"], name: "index_tasks_on_project_id", using: :btree
+  add_index "tasks", ["user_id"], name: "index_tasks_on_user_id", using: :btree
+
+  create_table "tests", force: true do |t|
+    t.string   "test_detail"
+    t.integer  "qanote_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "tests", ["qanote_id"], name: "index_tests_on_qanote_id", using: :btree
 
   create_table "users", force: true do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "password"
     t.string   "email"
+    t.string   "password_hash"
+    t.string   "password_salt"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "auth_token"
   end
+
+  create_table "users_roles", id: false, force: true do |t|
+    t.integer "user_id"
+    t.integer "role_id"
+  end
+
+  add_index "users_roles", ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id", using: :btree
 
 end
