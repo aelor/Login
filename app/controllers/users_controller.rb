@@ -29,11 +29,12 @@ def create
   authorize! :create, @user, :message => "Not authorized to create a new user."
 
   #params[:user_id].destroy :role
-
+  
   @user = User.new(params[:user])
    roles = Role.find(params[:user][:role_ids]) rescue []
     @user.roles = roles
   if @user.save
+    UserMailer.registration_confirmation(@user).deliver
     redirect_to root_url
     flash[:success] = "User successfully created as #{Role.find_by_id(roles).name}!"
   else
