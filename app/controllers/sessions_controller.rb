@@ -2,8 +2,8 @@ class SessionsController < ApplicationController
   
 def new
   if current_user != nil
-  redirect_to root_url
-  flash[:error] = "Why the hell do you want to login if you are already logged in dumb guy !"
+  redirect_to user_path(current_user)
+  flash[:error] = "Already logged in !"
   else
   end
 end

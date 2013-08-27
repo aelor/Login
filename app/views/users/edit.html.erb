@@ -37,7 +37,7 @@
 	<ul class="dropdown">
 		<% if current_user %>
 		<li class="">
-			<a href="/" title="HOME">HOME</a>
+			<%= link_to 'HOME', user_path(current_user) %>
 		</li>
 		<li class="">
 			<%= link_to 'CREATE NOTE', new_qanote_path %>
@@ -52,25 +52,13 @@
 	</ul>
 </div>
 <!--kreatio_header-->
-    <div id="slides">
-	<div class="slides_container" style="overflow: hidden; position: relative; display: block;">
-	  
-
-			<div class="qanote_image">
-				<img src="/assets/qanote.png" />
-            </div>
-		
-		
-	   </div>
-   
-</div>
 </div>
 
 
 <div id="wrapper_container">
 	
 	<div class="demo_left_part">
-		<div align="center"><hr width="100%" NOSHADE SIZE="5"> </hr></div>
+		<div align="center"></div>
 		<br /><br /><br /><br />
 		
 		<h1>Edit password/permissions for a user</h1>
@@ -126,7 +114,7 @@
   <%= f.submit 'Submit', class: 'button' %>
 <% end %>
         <br /><br /><br /><br /><br /><br />	
-        <div align="center"><hr width="100%" NOSHADE SIZE="5"> </hr></div>
+        <div align="center"></div>
 	</div>
 
 </div> 

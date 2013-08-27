@@ -8,9 +8,10 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *= require_self
- *= require_tree .
+
+
  */
+
 
 .pretty th .current {
   padding-right: 12px;
@@ -271,6 +272,23 @@ ul.dropdown li:hover > ul{ visibility: visible; }
 .result_block { clear: both;    float: left;    overflow: hidden;    padding-bottom: 15px;    width: 100%;}
 .thanks_for_vote {clear:both;width:100%;padding-bottom:20px;}
 
+/*styles for blog page*/
+.blogs_detaile_block {float:left;width:100%;   padding-top: 15px;}
+.blogs_info { border: 1px solid #CCCCCC;    border-radius:10px;   margin: 0;    padding: 0;-webkit-border-radius:10px;-o-border-radius:10px;}
+p.article_date {color:#8B8989;}
+.data_info_img {  float: left;    padding-right: 5px;    text-align: center;    width: 100px; padding-bottom: 20px;}
+.data_info_txt h5 {color:#59B89B;font-size:1.4em;font-weight:normal;padding-bottom:5px;}
+.data_info_txt h5 a{color:#59B89B;padding-bottom:5px;}
+.data_info_txt p {font-size:1.2em;color:#292626;padding:0px 0px 7px;}
+.data_info_blog {   border-bottom: 1px solid #BFBFBF;    float: left;   /* margin-top: 20px; */   padding: 10px;    width: 508px;}
+.blogs_center_blog {float:left;width:528px;}
+.blogs_center_blog div:last-child {border-bottom:none;}
+.read_more_butt {float:right;font-size:1.2em;}
+.read_more_butt a {color:#004A6E;}
+.blog_pagination {float:left;width:100%;text-align:center;margin-bottom:15px;margin-top:6px;}
+.blog_pagination a {font-size:1em;color:#004A6E;padding:0px 10px;font-weight:bold; margin-bottom: 15px;}
+.prev_arrow img {position:relative;top:5px;}
+.next_arrow img {position:relative;top:5px;}
 a.current {border-bottom:3px solid #BFD2DB;}
 .blogs_info legend img {margin-left:7px;}
 .blog_title {  color: #59B89B;    font-family: Arial;    font-size: 1.4em;    font-weight: bold;    padding-left: 10px;    padding-top: 10px;    text-transform: uppercase;}
@@ -404,6 +422,37 @@ p.designation {color:#8B8989;}
 /*blog rss */
 .bredcum_rgt_rss {    float: right;    position: relative;    top: -3px;}
 
+/* style for Search page */
+.search_results{float:left;width:100%;padding-top:10px;}
+.search_result_block{float:left;width:100%;}
+.search_result_block p{font-size:1em;color:#6e6e6e;}
+.search_field{background: none repeat scroll 0 0 #28AE87;float: left;margin-top: 4px;padding: 5px 10px;width: 96.4%;}
+.search_field .search_part{width:99.8%;border:1px solid #bdbdbd;}
+.search_field .text_input{width:90%;}
+.search_field p{font-size:1.2em;color:#fff;float: left;padding-top:5px;}
+.search_field p.results{float:right;padding-top:0px;}
+.search_field p.results img{padding-left:3px;position:relative;top:4px;}
+.search_content_list{float:left;width:100%;padding-top:12px;}
+.search_list{float:left;width:100%;padding-bottom:15px;border-bottom:1px solid #cfcfcf;margin-bottom:20px;}
+.search_list h3{color:#59b89b;font-size:1.4em;padding-bottom:12px;}
+.search_list p{font-size:1.2em;color:#000;}
+.search_content_list .search_list:last-child{margin-bottom:0px;border:0px;}
+.search_pagination{float:left;padding:4px 10px;width: 96.4%;background: none repeat scroll 0 0 #28AE87;}
+.search_pagination p{float:left;font-size:1.2em;color:#fff;font-weight: bold;}
+.search_pagination .pagination{top:0px;right:0px;}
+.search_page_number {float: right;padding-left: 10px;}
+.search_page_number .pagination span.prev_page {background: url("http://www.kreatio.com/images/prev-arrow.png") no-repeat scroll left center transparent !important;padding-left: 18px;padding-right:0px;}
+.search_page_number span, .search_page_number span.disabled, .search_page_number span.current {font-weight: normal;color: #cfcfcf;font-size: 1.2em;padding: 1px 2px;border:0px;}
+.search_page_number a{color: #004a6e;font-size: 1.2em;padding: 1px 2px;}
+.search_page_number .pagination a.next_page {background: url("http://www.kreatio.com/images/next-arrow.png") no-repeat scroll right center transparent;color: #004a6e;padding-right:20px;}
+.search_page_number a.next_page{float:none;}
+.search_list h3 a {color:#59b89b;}
+.search_field .search_part .text_submit {width:50px;text-align:center;padding-top:2px;padding-bottom:1px;}
+.search_page_number .previous_page {background:none;}
+.search_page_number .next_page {background:none;}
+.highlight {color:#F19100;}
+
+
 /*styles for ipad issues*/
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
 input {
@@ -523,42 +572,72 @@ input {
 }
 
 /****table design**/
-table {width:100%; font-size: 14px; font-family: "Lucida Grande", "Lucida Sans Unicode", "Trebuchet MS", sans-serif;padding: 0; margin: 0; border-collapse: collapse; color: #333;}
 
-table thead th {font-size:16px; background: #3A3C3F; padding: 20px 30px; color: #FFFFFF; text-align: left; font-weight: bold;}
-                      
-table tbody td, table tbody th {padding: 10px 30px; text-align: left;}
 
-table tbody tr{ background: #F3F5F7;}
-
-table thead th:first-child{
-  border-radius:10px 0 0 0px;
+#mytable {
+	width: 100%;
+	margin: 0;
+    padding-bottom: 10px;
+    padding-top: 20px;
+    border-collapse: collapse;
 }
 
-table th:last-child{
-  border-radius:0 10px 0px 0;
+caption {
+	padding: 0 0 5px 0;
+	width: 700px;	 
+	font: italic 11px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+	text-align: right;
 }
 
-table tbody tr:last-child th{
-	-moz-border-radius:0 0 0 10px;
-	-webkit-border-radius:0 0 0 10px;
-	border-radius:0 0 0 10px;
-	}
+th {
+	font: bold 11px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+	color: #4f6b72;
+	border-right: 1px solid #C1DAD7;
+	border-bottom: 1px solid #C1DAD7;
+	border-top: 1px solid #C1DAD7;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+	text-align: left;
+	padding: 6px 6px 6px 12px;
+	background: #CAE8EA url() no-repeat;
+}
+
+th.nobg {
+	border-top: 0;
+	border-left: 0;
+	border-right: 1px solid #C1DAD7;
+	background: none;
+}
+
+td {
 	
-table tr:last-child td:last-child{
-	-moz-border-radius-bottomright:10px;
-	-webkit-border-bottom-right-radius:10px;
-	border-bottom-right-radius:10px;
-	}
-
-tr:hover {background: #EAECEE;}
-
-.tablekimaa {
- border-radius: 10px;
--moz-border-radius: 10px
--webkit-border-radius: 10px;
-overflow: hidden; /*notice*/
+	border-bottom: 1px solid #C1DAD7;
+	background: #fff;
+	padding: 6px 6px 6px 12px;
+	color: #4f6b72;
 }
+
+
+td.alt {
+	background: #F5FAFA;
+	color: #797268;
+}
+
+th.spec {
+	border-left: 1px solid #C1DAD7;
+	border-top: 0;
+	background: #fff url(images/bullet1.gif) no-repeat;
+	font: bold 10px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+}
+
+th.specalt {
+	border-left: 1px solid #C1DAD7;
+	border-top: 0;
+	background: #f5fafa url(images/bullet2.gif) no-repeat;
+	font: bold 10px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+	color: #797268;
+}
+
 /****pagination styles***/
 
 .apple_pagination {
@@ -567,7 +646,7 @@ overflow: hidden; /*notice*/
   text-align: center;
   padding: 1em;
   cursor: default;
-   }
+  width: 790px; }
   .apple_pagination a, .apple_pagination span {
     padding: 0.2em 0.3em; }
   .apple_pagination .disabled {
@@ -1142,7 +1221,7 @@ Button container (mixing buttons and groups, e.g., nav bar)
 @font-face {
 	
     font-family: aller;
-    src: url('<%= asset_path('Aller_Rg.ttf') %>');
+    src: url('/assets/Aller_Rg.ttf');
 }
 
 .header_right h1 {
@@ -1203,10 +1282,185 @@ Button container (mixing buttons and groups, e.g., nav bar)
 	color: #4F6B72;
 }
 
-/* style for the rounded*/
-.rounded {
-     -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-    -khtml-border-radius: 5px;
-    border-radius: 5px;	
+
+
+/* Z-INDEX */
+
+ .formError { z-index: 990; }
+    .formError .formErrorContent { z-index: 991; }
+    .formError .formErrorArrow { z-index: 996; }
+
+    .ui-dialog .formError { z-index: 5000; }
+    .ui-dialog .formError .formErrorContent { z-index: 5001; }
+    .ui-dialog .formError .formErrorArrow { z-index: 5006; }
+
+
+
+
+.inputContainer {
+	position: relative;
+	float: left;
+}
+
+.formError {
+	position: absolute;
+	top: 300px;
+	left: 300px;
+	display: block;
+	cursor: pointer;
+	text-align: left;
+}
+
+.formError.inline {
+	position: relative;
+	top: 0;
+	left: 0;
+	display: inline-block;
+}
+
+.ajaxSubmit {
+	padding: 20px;
+	background: #55ea55;
+	border: 1px solid #999;
+	display: none;
+}
+
+.formError .formErrorContent {
+	width: 100%;
+	background: #777777;
+	position:relative;
+	color: #fff;
+	min-width: 120px;
+	font-size: 11px;
+	border: 2px solid #ddd;
+	box-shadow: 0 0 6px #000;
+	-moz-box-shadow: 0 0 6px #000;
+	-webkit-box-shadow: 0 0 6px #000;
+	-o-box-shadow: 0 0 6px #000;
+	padding: 4px 10px 4px 10px;
+	border-radius: 6px;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	-o-border-radius: 6px;
+}
+
+.formError.inline .formErrorContent {
+	box-shadow: none;
+	-moz-box-shadow: none;
+	-webkit-box-shadow: none;
+	-o-box-shadow: none;
+	border: none;
+	border-radius: 0;
+	-moz-border-radius: 0;
+	-webkit-border-radius: 0;
+	-o-border-radius: 0;
+}
+
+.greenPopup .formErrorContent {
+	background: #33be40;
+}
+
+.blackPopup .formErrorContent {
+	background: #393939;
+	color: #FFF;
+}
+
+.formError .formErrorArrow {
+	width: 15px;
+	margin: -2px 0 0 13px;
+	position:relative;
+}
+body[dir='rtl'] .formError .formErrorArrow,
+body.rtl .formError .formErrorArrow {
+	margin: -2px 13px 0 0;
+}
+
+.formError .formErrorArrowBottom {
+	box-shadow: none;
+	-moz-box-shadow: none;
+	-webkit-box-shadow: none;
+	-o-box-shadow: none;
+	margin: 0px 0 0 12px;
+	top:2px;
+}
+
+.formError .formErrorArrow div {
+	border-left: 2px solid #ddd;
+	border-right: 2px solid #ddd;
+	box-shadow: 0 2px 3px #444;
+	-moz-box-shadow: 0 2px 3px #444;
+	-webkit-box-shadow: 0 2px 3px #444;
+	-o-box-shadow: 0 2px 3px #444;
+	font-size: 0px;
+	height: 1px;
+	background: #777777;
+	margin: 0 auto;
+	line-height: 0;
+	font-size: 0;
+	display: block;
+}
+
+.formError .formErrorArrowBottom div {
+	box-shadow: none;
+	-moz-box-shadow: none;
+	-webkit-box-shadow: none;
+	-o-box-shadow: none;
+}
+
+.greenPopup .formErrorArrow div {
+	background: #33be40;
+}
+
+.blackPopup .formErrorArrow div {
+	background: #393939;
+	color: #FFF;
+}
+
+.formError .formErrorArrow .line10 {
+	width: 15px;
+	border: none;
+}
+
+.formError .formErrorArrow .line9 {
+	width: 13px;
+	border: none;
+}
+
+.formError .formErrorArrow .line8 {
+	width: 11px;
+}
+
+.formError .formErrorArrow .line7 {
+	width: 9px;
+}
+
+.formError .formErrorArrow .line6 {
+	width: 7px;
+}
+
+.formError .formErrorArrow .line5 {
+	width: 5px;
+}
+
+.formError .formErrorArrow .line4 {
+	width: 3px;
+}
+
+.formError .formErrorArrow .line3 {
+	width: 1px;
+	border-left: 2px solid #ddd;
+	border-right: 2px solid #ddd;
+	border-bottom: 0 solid #ddd;
+}
+
+.formError .formErrorArrow .line2 {
+	width: 3px;
+	border: none;
+	background: #ddd;
+}
+
+.formError .formErrorArrow .line1 {
+	width: 1px;
+	border: none;
+	background: #ddd;
 }

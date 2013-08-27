@@ -37,10 +37,10 @@
 	<ul class="dropdown">
 		<% if current_user %>
 		<li class="">
-			<a href="/" title="HOME">HOME</a>
+			<%= link_to 'HOME', user_path(current_user) %>
 		</li>
 		<li class="">
-			<%= link_to 'CREATE TAG', 'pages/determinetask' %>
+			<%= link_to 'CREATE NOTE', new_qanote_path %>
 		</li>
 		<li class="">
 		    <%= link_to 'INDEX OF QANOTES', :controller => :qanotes, :action => :index, :id => current_user.id %>
@@ -68,7 +68,7 @@
 
 <h1>List of current clients</h1>
 <br><br>
-				
+<div class="tablekimaa">			
 <table>
   <thead>
     <tr>
@@ -82,7 +82,7 @@
   <tbody>
     <% @clients.each do |client| %>
       <tr>
-        <td><%= client.client_name %></td>
+      	<th scope="row"><%= client.client_name %></th>
         <td><%= link_to 'Select', client %></td>
         <% if (current_user.has_role? :admin) %>
         <td><%= link_to 'Edit', edit_client_path(client) %></td>
@@ -91,24 +91,83 @@
       </tr>
     <% end %>
   </tbody>
+ 
 </table>
-<%= select_tag :client_id, options_from_collection_for_select(@clients, 'id', 'client_name')%>
-<p class="update_project">
-
-<%= collection_select(:project, :client_id, Project.where(client_id: params[:client_id]).all, :id, :project_name, :prompt => true) %>
-       
-</p>
-
-<br>
-
+</div>
+<br><br>
 <%= link_to 'New Client', new_client_path, :class => "button" %>
 
 </div>
         <br />
         
+        <table class="table3">
+                <thead>
+                    <tr>
+                        <th scope="col">hello</th>
+                        <th scope="col" abbr="Starter">Smart Starter</th>
+                        <th scope="col" abbr="Medium">Smart Medium</th>
+                        <th scope="col" abbr="Business">Smart Business</th>
+                        <th scope="col" abbr="Deluxe">Smart Deluxe</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th scope="row">Price per month</th>
+                        <td>$ 2.90</td>
+                        <td>$ 5.90</td>
+                        <td>$ 9.90</td>
+                        <td>$ 14.90</td>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    <tr>
+                        <th scope="row">Storage Space</th>
+                        <td>512 MB</td>
+                        <td>1 GB</td>
+                        <td>2 GB</td>
+                        <td>4 GB</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Bandwidth</th>
+                        <td>50 GB</td>
+                        <td>100 GB</td>
+                        <td>150 GB</td>
+                        <td>Unlimited</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">MySQL Databases</th>
+                        <td>Unlimited</td>
+                        <td>Unlimited</td>
+                        <td>Unlimited</td>
+                        <td>Unlimited</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Setup</th>
+                        <td>19.90 $</td>
+                        <td>12.90 $</td>
+                        <td>free</td>
+                        <td>free</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">PHP 5</th>
+                        <td><span class="check"></span></td>
+                        <td><span class="check"></span></td>
+                        <td><span class="check"></span></td>
+                        <td><span class="check"></span></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Ruby on Rails</th>
+                        <td><span class="check"></span></td>
+                        <td><span class="check"></span></td>
+                        <td><span class="check"></span></td>
+                        <td><span class="check"></span></td>
+                    </tr>
+                </tbody>
+            </table>
 	</div>
 
 </div> 
+
 <!--kreatio_container-->
 
 <div id="wrapper_footer">

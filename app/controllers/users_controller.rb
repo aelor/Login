@@ -35,7 +35,7 @@ def create
     @user.roles = roles
   if @user.save
     UserMailer.registration_confirmation(@user).deliver
-    redirect_to root_url
+    redirect_to users_path
     flash[:success] = "User successfully created as #{Role.find_by_id(roles).name}!"
   else
     render "new"
@@ -65,7 +65,7 @@ def destroy
   @user = User.find(params[:id])
   @user.destroy
   
-  redirect_to edit_user_path
+  redirect_to users_path
   flash[:success] = "User successfully deleted !"
 end
 

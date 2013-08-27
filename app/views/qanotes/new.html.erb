@@ -24,7 +24,7 @@
 	<ul class="dropdown">
 		<% if current_user %>
 		<li class="">
-			<a href="/" title="HOME">HOME</a>
+			<%= link_to 'HOME', user_path(current_user) %>
 		</li>
 		<li class="">
 			<%= link_to 'CREATE NOTE', new_qanote_path %>

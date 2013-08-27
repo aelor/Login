@@ -24,7 +24,7 @@
 			<div class="menucontainer">
 				<ul class="dropdown">
 					<% if current_user %>
-					<li><a href="/" title="HOME">HOME</a></li>
+					<li><%= link_to 'HOME', user_path(current_user) %></li>
 					<li><%= link_to 'CREATE NOTE', new_qanote_path %></li>
 					<li><%= link_to 'INDEX OF QANOTES', :controller => :qanotes, :action => :index, :id => current_user.id %></li>
 				    <li><%= link_to 'USERS', users_path %></li>

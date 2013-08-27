@@ -37,7 +37,7 @@
 	<ul class="dropdown">
 		<% if current_user %>
 		<li class="">
-			<a href="/" title="HOME">HOME</a>
+			<%= link_to 'HOME', user_path(current_user) %>
 		</li>
 		<li class="">
 			<%= link_to 'CREATE NOTE', new_qanote_path %>
@@ -91,7 +91,7 @@
   <tbody>
     <% @users.each do |user| %>
       <tr>
-        <td><%= user.email%></td>
+        <th scope="row"><%= user.email%></th>
         <% if (current_user.has_role? :admin)  && (current_user != user) %>
         <td><%= link_to 'Show', user, :class=>"button" %></td>
         

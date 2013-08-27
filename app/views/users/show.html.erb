@@ -23,7 +23,7 @@
 		<ul class="dropdown">
 			<% if current_user %>
 			<li class="">
-				<a href="/" title="HOME">HOME</a>
+			<%= link_to 'HOME', user_path(current_user) %>
 			</li>
 			<li class="">
 	            <%= link_to 'CREATE NOTE', new_qanote_path %></li>
@@ -42,7 +42,7 @@
 	  
 
 			<div class="qanote_image">
-				<img src="/assets/qanote.png" />
+				<%= image_tag("qanote.png") %>
             </div>
 		
 		
@@ -58,11 +58,11 @@
 		<div align="center"></div>
 		
               <div class="box">
-				   <h1>Welcome to your dashboard !</h1>
+				   <h1>Welcome back !</h1>
 		
 		            <h3 style="color: grey;font-size: 20px;">What do you want to do today <%= current_user.email %> ?</h3>
 		            <% if (current_user.has_role? :admin) %>
-		        		<%= link_to 'Create a new task', clients_path, :class=>"button pill" %>
+		        		<%= link_to 'Add new client', clients_path, :class=>"button pill" %>
 		            <% else %>
 		                <br /><br /><br />
 		             <h3 style="color: grey;font-size: 15px;">Well,you may like to see the release notes that you have created</h3>
