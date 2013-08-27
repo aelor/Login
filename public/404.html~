@@ -4,7 +4,7 @@
   <title>The page you were looking for doesn't exist (404)</title>
   <style>
   body {
-    background-image:url('/assets/greynew.jpg');
+    background-image:url('/assets/greybg.jpg');
     background-repeat:repeat;
     color: #2E2F30;
     text-align: center;
@@ -15,7 +15,7 @@
 
 <body>
   <!-- This file lives in public/404.html -->
-  <div style="margin-top: 100px;">
+  <div>
     <img src="http://www.404notfound.fr/assets/images/pages/img/taptapdesign.jpg">
   </div>
 </body>

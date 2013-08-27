@@ -45,14 +45,12 @@ $(document).on('change click blur', '#qanote_servername', function() {
 						}
 						document.getElementById("qanote_currenttag").value = xsub+s;		
 				      
+				 }).then(function() {/* to store the old tag in the database */
+				 	var oldtagnewval = $('#oldtag').val();
+	                document.getElementById("qanote_oldtag").value = oldtagnewval;
 				 });
 });
 
-/* to store the old tag in the database */
-$(document).on('click','#qanote_currenttag', function() {
-	var oldtagnewval = $('#oldtag').val();
-	document.getElementById("qanote_oldtag").value = oldtagnewval;
-});
 
 /* display current tag as +1 of old tag
 	 $(document).on('focus','#qanote_currenttag', function() {
