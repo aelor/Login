@@ -3,27 +3,32 @@ class SessionsController < ApplicationController
 def new
   if current_user != nil
   redirect_to user_path(current_user)
-  flash[:error] = "Already logged in !"
   else
   end
 end
 
+debugger
 def create
   user = User.authenticate(params[:email], params[:password])
   if user
-    session[:user_id] = user.id
+    if params[:remember_me]
+      cookies.permanent[:auth_token] = user.auth_token
+    else
+      cookies[:auth_token] = user.auth_token
+    end
     redirect_back_or(user) 
-    flash[:success] = "Logged in!"
+    flash[:notice] = "Logged in!"
   else
-    flash.now[:error] = "Invalid email or password"
+    flash.now.alert = "Invalid email or password"
     render "new"
   end
 end
 
 def destroy
-  session[:user_id] = nil
+  cookies.delete(:auth_token)
   redirect_to root_url, :notice => "Logged out!"
 end
+
 
 
 end

@@ -7,14 +7,13 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
   
   rescue_from CanCan::AccessDenied do |exception|
-    redirect_to root_url, :alert => exception.message
+    redirect_to user_path(current_user), :alert => exception.message
   end
 
   private
   
-
   def current_user
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    @current_user ||= User.find_by_auth_token!(cookies[:auth_token]) if cookies[:auth_token]
   end
   
   def signed_in

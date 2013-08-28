@@ -42,7 +42,7 @@
 <div class="content">
 	
 	<table>
-		<tr><td><h3>Enter the release information below</h3></tr></td>
+		<tr><td><h3>Enter the release information below</h3></td><td></td></tr>
   <tr><td><div class="text">Client details:  </td><td><%= f.collection_select(:clientdetail, Client.all, :client_name, :client_name,{:prompt => true},{:class=>'styled-select'})%> <br/></td></tr></div>
   <tr><td><div class="text">Project name:  </td><td>
   	   <p class="updated_project">No Client selected</p>
@@ -61,7 +61,7 @@
   <tr><td><div class="text">Uploaded from tag:</td><td><%= f.select :uploadedfromtag, [['Yes','Yes'],['No','No']], {},{:class=>'styled-select'}%><br/></div></td></tr>
   
 <div class="header">
-    <tr><td><h3>Enter the Released details below</h3></td></tr>
+    <tr><td><h3>Enter the Released details below</h3></td><td></td></tr>
 </div>
  
   <tr><td><div class="text">Task No.details:  </td><td><%= f.text_field :tasknodetail, :onkeyup=>"updateQanote_patchnamedetail()"%><br/></td></tr></div>
@@ -69,7 +69,7 @@
   
   
  <div class="header">
-    <tr><td><h3>Enter the Code difference details below</h3></tr></td>
+    <tr><td><h3>Enter the Code difference details below</h3></td><td></td></tr>
 </div>
 
   <tr><td><div class="text">Current application and old tag difference taken:</td><td><%= f.select :diff1, [['Yes','Yes'],['No','No']], {},{:class=>'styled-select'}%><br/></div></td></tr>

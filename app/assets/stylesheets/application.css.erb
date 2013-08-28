@@ -45,7 +45,7 @@ p {text-align:justify;}
 /*common styles */
 #wrapper {width:926px;margin:0 auto;}
 #wrapper_header {width:926px;margin:0 auto;}
-#wrapper_container {background-color:#fff;float:left;width:883px;height:relative;padding:20px 22px 0px 19px;border-left: 1px solid #DEDDDD;    border-right: 1px solid #DEDDDD;position: relative;    top: -18px;}
+#wrapper_container {background-color:#fff;float:left;width:883px;padding:20px 22px 0px 19px;border-left: 1px solid #DEDDDD;    border-right: 1px solid #DEDDDD;position: relative;    top: -18px;}
 #wrapper_footer {float:left;width:924px;border-left:1px solid #DEDDDD;border-right:1px solid #DEDDDD; margin-top: -18px;}
 /*header part style*/
 .header_top {width:879px;float:left;background:#fff;padding:11px 22px 2px 25px;height: 80px;}
@@ -63,12 +63,6 @@ p {text-align:justify;}
 .links_part ul:last-child li {padding-right:0px;}
 .aboutus_part ul li:last-child {padding-right:0px;background:none;}
 /* menu part styles*/
-.menucontainer {float:left;background:#000;padding:0px 22px 0px 25px;height:32px;width:879px;}
-.menucontainer ul li {float:left;list-style-type:none;font-size:1.1em;font-family:Arial;}
-.menucontainer li a {color:#FFFFFF;font-weight:bold;padding-right:12px;padding-left:10px;padding-top:9px;padding-bottom:10px;}
-.menucontainer li.active {background:url("http://www.kreatio.com/images/menu_active_bg.jpg") repeat-x left top;}
-.menucontainer li:hover {background:url("http://www.kreatio.com/images/menu_active_bg.jpg") repeat-x left top;}
-ul.dropdown ul li:hover {background: url("http://www.kreatio.com/images/menu_active_bg.jpg") repeat-x scroll left top #389B7E;position: relative;}
 /*gallery bottom menu style */
 .gallery_bottom_menu {float:left;width:924px;height:41px;background:#fff;position: relative;    top: -18px;border-left:1px solid #CCCBCB;border-right:1px solid #CCCBCB;}
 .gallery_bottom_menu ul li {padding-top:8px;float:left;list-style-type:none;font-size:1.1em;width:184px;text-align:center;background:#E9E9E9;margin-right:1px;height:24px;}
@@ -137,26 +131,6 @@ ul.dropdown ul li:hover {background: url("http://www.kreatio.com/images/menu_act
 .footer_links_bottom li:first-child {padding-left:0px;} 
 /*hover menu styles*/
 /*hover menu styles*/
-ul.dropdown { position:absolute; }
-ul.dropdown li { font-weight: bold; float: left; }
-ul.dropdown a:hover{ color:#FFFFFF;font-weight:bold; }
-ul.dropdown a:active { color: #ffa500; }
-ul.dropdown li a { display: block;color: #FFFFFF; }
-ul.dropdown li:last-child a  { border-right: none; }
-ul.dropdown li.hover,ul.dropdown li:hover {background:url("http://www.kreatio.com/images/menu_active_bg.jpg") repeat-x left top; position: relative; }
-ul.dropdown li.hover a { color:#fff; }
-ul.dropdown li.hover li a  {color:#555555;}
-ul.dropdown ul { width: 220px; visibility: hidden; position: absolute; top: 100%; left: 0; }
-ul.dropdown ul li { font-weight: bold; background:#E4E9E8; color: #555555; font-family:arial;border-bottom: 2px solid #fff; float: none; }
-ul.dropdown ul li a    { border-right: none; width: 100%; display: inline-block; }
-ul.dropdown ul ul { left: 100%; top: 0; }
-ul.dropdown li:hover > ul{ visibility: visible; }
-.menucontainer {  z-index: 6;background:#000;padding:0px 22px 0px 25px;height:31px;width:879px;position: relative;}
-.menucontainer ul li {float:left;list-style-type:none;font-size:1.1em;font-family:Arial;}
-.menucontainer ul li {color:#FFFFFF;font-weight:bold; }
-.common_carousel_heading {text-align:center;background:url("http://www.kreatio.com/images/dotted_border_img.jpg") no-repeat left 2px;}
-.common_carousel_heading  p {font-weight:bold;text-transform:uppercase;color:#59B89B;font-size:13px; padding-left: 49px;text-align:center;}
-.gallery_bottom_menu ul li:hover {background:url("http://www.kreatio.com/images/hover_bg.png") no-repeat left top;}
 
 /* Added By Srikanth */
 .mont_hori_line {height: 2px;    margin: 0 3px;border-bottom:1px dashed #AFAFAC;padding-bottom:10px;}
@@ -1064,7 +1038,7 @@ Button container (mixing buttons and groups, e.g., nav bar)
 
 #loginform{
 		width: 260px;
-		height: 239px;
+		height: 250px;
 		background: #fff url(../assets/bg_form.jpg) repeat-x top left;		
 		-moz-border-radius:4px;
 		-webkit-border-radius:4px;
@@ -1089,7 +1063,7 @@ Button container (mixing buttons and groups, e.g., nav bar)
 		border-radius: 2px;
 		font: 13px "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
 		color: #777;
-		margin: 0;
+		margin: 5px 0 15px 0px;
 		width: 210px;
 		max-width: 100%;
 		display: block;
@@ -1108,17 +1082,10 @@ Button container (mixing buttons and groups, e.g., nav bar)
 	textarea {
 		min-height: 60px; }
 	label { 
-		display: block;
-		font-size: 13px;
-		margin-top: 10px;  }
+		font-size: 13px; }
 	select #loginform{ 
 		width: 220px; }
-	input[type="checkbox"] {
-		display: inline; }
-	label span {
-		font-weight: normal;
-		font-size: 13px;
-		color: #444; }
+
 
 #loginform h2 {
 		font-size: 14px;
@@ -1181,9 +1148,11 @@ Button container (mixing buttons and groups, e.g., nav bar)
     padding: 6px 6px 6px 12px;
     height: 35px;
 }
+
 .content tr{
 	height: 30px;
 }
+
 .content th {
 	font: bold 11px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
 	color: #4f6b72;
@@ -1210,3 +1179,184 @@ Button container (mixing buttons and groups, e.g., nav bar)
     -khtml-border-radius: 5px;
     border-radius: 5px;	
 }
+
+
+input[type="checkbox"]
+{
+	margin-right: 5px;
+	
+}
+
+#forgotlink{
+	margin-top: 20px;
+}
+
+/**lavalamp type with only css***/
+.menus{
+	background-color: #3A3C3F;
+    margin-top: 100px;
+    position: absolute;
+    width: 925px;
+    z-index: 9;
+}
+
+.menus a {
+
+    color: #F5F5F5;
+    font-family: helvetica;
+    font-size: 12px;
+    font-weight: bold;
+
+}
+
+.menus a:hover, a:focus {
+
+    text-decoration: none;
+    color: #59B89B;
+
+}
+
+.menus ul {
+
+    position: relative;
+
+    overflow: hidden;
+    margin-left: 20px;
+    zoom: 1;
+
+}
+
+.menus li {
+
+    list-style: none outside;
+
+    position: relative;
+
+    z-index: 1;
+
+    float: left;
+
+    border-bottom: 5px solid #ececec;
+
+    padding: 0 20px 0 0;
+
+}
+
+.menus li a {
+
+    position: relative;
+
+    top: 5px;
+
+    display: block;
+
+    margin: -5px 0 0;
+
+    border-bottom: 5px solid transparent;
+
+    padding: 10px 0;
+
+    text-align: center;
+
+    text-decoration: none;
+
+    text-transform: uppercase;
+
+}
+
+.menus .n1 {
+
+    width: 50px;
+
+}
+
+.menus .n2 {
+
+    width: 87px;
+
+}
+
+.menus .n3 {
+
+    width: 129px;
+}
+
+.menus .n4 {
+    width: 50px;
+    padding-right: 0 !important;
+}
+
+.menus .selected a {
+
+    border-bottom-color: #cfd0d0;
+
+    color: #340e56;
+
+}
+
+.menus .quebec {
+
+    position: absolute;
+
+    bottom: 0;
+
+    left: 0;
+
+    z-index: 3;
+
+    margin: 0;
+
+    border: 0;
+
+    width: 5px;
+
+    height: 5px;
+
+    padding: 0;
+
+    overflow: hidden;
+
+    text-indent: -9999em;
+
+    background: #59B89B;
+
+    -webkit-transition-property: left, width;
+
+    -moz-transition-property: left, width;
+
+    -ms-transition-property: left, width;
+
+    -o-transition-property: left, width;
+
+    transition-property: left, width;
+
+    -webkit-transition-duration: .5s;
+
+    -moz-transition-duration: .5s;
+
+    -ms-transition-duration: .5s;
+
+    -o-transition-duration: .5s;
+
+    transition-duration: .5s;
+
+    pointer-events: none;
+
+}
+
+.menus li:hover {
+
+    left: -20px;
+
+    z-index: 2;
+
+    margin-right: -20px;
+
+    padding: 0 20px;
+
+}
+
+.menus .n1:hover ~ li.quebec { left: 0; width: 50px; }
+.menus .n2:hover ~ li.quebec { left: 70px; width: 87px; }
+.menus .n3:hover ~ li.quebec { left: 177px; width: 129px; }
+.menus .n4:hover ~ li.quebec { left: 326px; width: 50px; }

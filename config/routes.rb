@@ -34,6 +34,7 @@ Login::Application.routes.draw do
   end
   resources :sessions
   resources :qanotes
+  resources :password_resets
  # get "projects/submit_client"
   #put "projects/submit_client"
   post "projects/submit_client"
