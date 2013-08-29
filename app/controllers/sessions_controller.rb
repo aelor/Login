@@ -7,7 +7,6 @@ def new
   end
 end
 
-debugger
 def create
   user = User.authenticate(params[:email], params[:password])
   if user
